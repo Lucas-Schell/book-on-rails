@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20211129023632_add_index_to_column_email.rb
