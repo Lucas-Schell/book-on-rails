@@ -7,7 +7,7 @@ class SessionController < ApplicationController
 
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_path, notice: "Logado com sucesso"
+      redirect_to books_path, notice: "Conectado com sucesso"
     else
       flash[:alert] = "Email ou senha incorretos"
       render :new

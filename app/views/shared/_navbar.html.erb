@@ -13,7 +13,7 @@
         <% if Current.user %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <%= Current.user.email %>
+              <%= Current.user.name %>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><%= button_to "Sair", logout_path, method: :delete, class: "dropdown-item" %></li>
