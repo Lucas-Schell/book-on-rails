@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: %i[ show edit update destroy ]
-  before_action :require_user_logged_in
+  before_action :set_book, only: %i[show edit update destroy]
+  before_action :require_user_logged_in, only: %i[index new edit create update destroy]
 
   # GET /books or /books.json
   def index

@@ -15,5 +15,7 @@
   <%= @book.publication_year %>
 </p>
 
-<%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
+<% if Current.user && Current.user.id == @book.user_id %>
+  | <%= link_to 'Edit', edit_book_path(@book) %>
+<% end %>

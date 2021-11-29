@@ -17,7 +17,7 @@
       <td><%= book.author %></td>
       <td><%= book.publication_year %></td>
       <td><%= link_to 'Show', book %></td>
-      <% if Current.user.id == book.id %>
+      <% if Current.user && Current.user.id == book.user_id %>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
       <% end %>
     </tr>
