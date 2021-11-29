@@ -1,0 +1,27 @@
+<h1>Cadastro</h1>
+
+<%= form_with model: @user, url: sign_up_path do |form| %>
+  <% if form.object.errors.any? %>
+    <div class="alert alert-danger">
+      <% form.object.errors.full_messages.each do |message| %>
+      <div><%= message %></div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label "Email" %>
+    <%= form.text_field :email, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label "Senha" %>
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label "Confirme sua senha" %>
+    <%= form.password_field :password_confirmation, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.submit "Cadastre-se", class: "btn btn-primary" %>
+  </div>
+<% end %>

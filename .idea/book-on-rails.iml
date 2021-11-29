@@ -11,6 +11,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actioncable (v6.1.4.1, ruby-3.0.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionmailbox (v6.1.4.1, ruby-3.0.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionmailer (v6.1.4.1, ruby-3.0.3-p157) [gem]" level="application" />
@@ -23,6 +24,7 @@
     <orderEntry type="library" scope="PROVIDED" name="activestorage (v6.1.4.1, ruby-3.0.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v6.1.4.1, ruby-3.0.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="addressable (v2.8.0, ruby-3.0.3-p157) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.16, ruby-3.0.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bindex (v0.8.1, ruby-3.0.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bootsnap (v1.9.3, ruby-3.0.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.2.4, ruby-3.0.3-p157) [gem]" level="application" />
@@ -84,7 +86,6 @@
     <orderEntry type="library" scope="PROVIDED" name="websocket-extensions (v0.1.5, ruby-3.0.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="xpath (v3.2.0, ruby-3.0.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="zeitwerk (v2.5.1, ruby-3.0.3-p157) [gem]" level="application" />
-    <orderEntry type="library" name="bootstrap" level="application" />
   </component>
   <component name="RakeTasksCache">
     <option name="myRootTask">
