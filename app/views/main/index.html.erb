@@ -17,8 +17,9 @@
       <td><%= book.author %></td>
       <td><%= book.publication_year %></td>
       <td><%= link_to 'Show', book %></td>
-      <td><%= link_to 'Edit', edit_book_path(book) %></td>
-      <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% if Current.user.id == book.id %>
+        <td><%= link_to 'Edit', edit_book_path(book) %></td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>
