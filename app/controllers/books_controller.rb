@@ -4,7 +4,7 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @books = Book.where(user_id: Current.user.id)
+    @books = Book.where(user_id: Current.user.id).order(updated_at: :desc)
   end
 
   # GET /books/1 or /books/1.json

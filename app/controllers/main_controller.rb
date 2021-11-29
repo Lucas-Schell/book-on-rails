@@ -1,5 +1,5 @@
 class MainController < ApplicationController
   def index
-    @books = Book.all
+    @books = Book.all.order(updated_at: :desc)
   end
 end
