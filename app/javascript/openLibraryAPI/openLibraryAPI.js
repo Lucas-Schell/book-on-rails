@@ -4,6 +4,9 @@ window.addEventListener("turbolinks:load", () => {
     document.getElementById('new-book-page')?.addEventListener('input', (event) => {
         clearTimeout(timeout)
         timeout = setTimeout(() => {
+
+            $('<button/>').addClass('dropdown-item').attr('type', 'button').text("Carregando...").appendTo('#result-list');
+
             let url = `http://openlibrary.org/search.json?q=${event.target.value}`;
             $.getJSON(url, (response) => {
                 const results = response.docs.slice(0, 10).map(doc => {
@@ -16,7 +19,10 @@ window.addEventListener("turbolinks:load", () => {
                 list.empty()
                 $.each(results, (i) => {
                     const li = $('<li/>').appendTo(list);
-                    $('<button/>').addClass('dropdown-item').attr('type', 'button').text(results[i].title).on('click', () => selectBook(results[i])).appendTo(li);
+                    const text = $('<span/>').text(results[i].title)
+                    $('<button/>').addClass('dropdown-item').attr('type', 'button')
+                        .on('click', () => selectBook(results[i])).appendTo(li)
+                        .append(text);
                 });
             });
         }, 500);
