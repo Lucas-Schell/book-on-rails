@@ -17,3 +17,11 @@
 .underline-hover:hover {
     text-decoration: underline !important;
 }
+
+.input-group-btn {
+    position: static;
+}
+
+.dropdown-menu {
+    width: 100%;
+}

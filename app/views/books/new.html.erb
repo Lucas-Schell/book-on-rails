@@ -1,18 +1,21 @@
 <h1 class="text-center mt-2">Novo Livro</h1>
-<div class="d-flex flex-column align-items-center mx-auto w-50">
+<div id="new-book-page" class="d-flex flex-column align-items-center mx-auto w-50">
   <%= form_with model: @book, class: "w-100", url: books_path do |form| %>
     <% if form.object.errors.any? %>
       <div class="alert alert-danger">
-        <% form.object.errors.messages.each do |arrt, message| %>
+        <% form.object.errors.messages.each do |attr, message| %>
           <div><%= message.first %></div>
         <% end %>
       </div>
     <% end %>
 
-    <div class="mb-3">
+    <div class="mb-3 position-relative" id="lll">
       <%= form.label "Título" %>
-      <%= form.text_field :title, class: "form-control" %>
+      <%= form.text_field :title, class: "dropdown-toggle form-control", href: "#", id:"book_title", role:"button", "data-bs-toggle":"dropdown", "aria-expanded":"false", autocomplete: "off" %>
+      <ul id="result-list" class="dropdown-menu " aria-labelledby="title">
+      </ul>
     </div>
+
     <div class="mb-3">
       <%= form.label "Autor" %>
       <%= form.text_field :author, class: "form-control" %>
