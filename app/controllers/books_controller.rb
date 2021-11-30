@@ -4,7 +4,21 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @books = Book.where(user_id: Current.user.id).order(created_at: :desc)
+    reuslts_per_page = 5
+    param_page = params[:page].nil? || params[:page].to_i.zero? ? 1 : Integer(params[:page])
+    total_pages = Book.page(1).per(reuslts_per_page).total_pages
+    page = Book.page(param_page).per(reuslts_per_page).out_of_range? ? total_pages : param_page
+    initial_pagination = if page < 5 || total_pages < 11
+                           1
+                         elsif total_pages - page < 6
+                           total_pages - 9
+                         else
+                           page - 4
+                         end
+
+    @books = Book.where(user_id: Current.user.id).order(created_at: :desc).page(page).per(reuslts_per_page)
+    @info = { page: page, total_pages: total_pages,
+              initial_pagination: initial_pagination }
   end
 
   # GET /books/1 or /books/1.json
