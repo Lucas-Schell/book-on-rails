@@ -7,6 +7,6 @@ class User < ApplicationRecord
   validates_length_of :password, in: 6..30, message: 'A senha deve ter pelo menos 6 caracteres.'
   validate :check_password_confirmation
   def check_password_confirmation
-    errors.add(:password_confirmation, 'As senhas devem ser iguais.') if :password != :password_confirmation
+    errors.add(:password_confirmation, 'As senhas devem ser iguais.') if password != password_confirmation
   end
 end
