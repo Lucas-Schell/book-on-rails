@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.underline-hover:hover {
+    text-decoration: underline !important;
+}
