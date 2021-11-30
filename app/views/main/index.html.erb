@@ -20,3 +20,19 @@
     <% end %>
   </ul>
 </div>
+
+<nav class="mt-4 d-flex justify-content-center">
+  <ul class="pagination">
+    <li class="page-item<%= (Integer(@info[:page]) == 1) ? ' disabled' : '' %>">
+      <%= link_to "Anterior", root_path(page: Integer(@info[:page]) - 1), class: "page-link" %>
+    </li>
+    <% (@info[:initial_pagination]..[@info[:total_pages], 10].min + @info[:initial_pagination] -1).each do |i| %>
+      <li class="page-item<%=  + (Integer(@info[:page]) == i ? ' active' : '') %>">
+        <%= link_to i, root_path(page: i), class: "page-link" %>
+      </li>
+    <% end %>
+    <li class="page-item<%= Integer(@info[:page]) == Integer(@info[:total_pages]) ? ' disabled' : '' %>">
+      <%= link_to "Próxima", root_path(page: Integer(@info[:page]) + 1), class: "page-link" %>
+    </li>
+  </ul>
+</nav>
