@@ -8,12 +8,12 @@ class BooksController < ApplicationController
     param_page = params[:page].nil? || params[:page].to_i.zero? ? 1 : Integer(params[:page])
     total_pages = Book.where(user_id: Current.user.id).page(1).per(results_per_page).total_pages
     page = Book.where(user_id: Current.user.id).page(param_page).per(results_per_page).out_of_range? ? total_pages : param_page
-    initial_pagination = if page < 5 || total_pages < 11
+    initial_pagination = if page < 3 || total_pages < 7
                            1
-                         elsif total_pages - page < 6
-                           total_pages - 9
+                         elsif total_pages - page < 4
+                           total_pages - 5
                          else
-                           page - 4
+                           page - 2
                          end
 
     @books = Book.where(user_id: Current.user.id).order(created_at: :desc).page(page).per(results_per_page)
@@ -82,6 +82,6 @@ class BooksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def book_params
-    params.require(:book).permit(:title, :author, :publication_year)
+    params.require(:book).permit(:title, :author, :publication_year, :image)
   end
 end

@@ -34,14 +34,34 @@ body {
     background-color: #eaeaea !important;
 }
 
+.bg-off-white-light {
+    background-color: #eae7d7 !important;
+}
+
 .max-w-25 {
-    max-width: 25rem;
+    max-width: 25rem !important;
 }
 
 .max-w-50 {
-    max-width: 50rem;
+    max-width: 50rem !important;
+}
+
+.w-3 {
+    width: 3rem !important;
+}
+
+.w-4_5 {
+    width: 4.5rem !important;
+}
+
+.min-h-4 {
+    min-height: 4rem !important;
+}
+
+.min-h-6 {
+    min-height: 6rem !important;
 }
 
 .color-grey {
-    color: #909090;
+    color: #909090 !important;
 }

@@ -4,14 +4,19 @@
   <ul id="book-list" class="list-group">
     <% @books.each do |book| %>
       <li class="list-group-item d-flex align-items-center justify-content-between bg-off-white">
-        <div>
-          <%= link_to book, class: "text-decoration-none text-black underline-hover" do %>
-            <h5><%= book.title %></h5>
+        <div class="d-flex gap-2">
+          <% if book.image %>
+            <%= image_tag book.image, alt: book.title, class: "img-thumbnail w-4_5 min-h-6" %>
           <% end %>
-          <span><%= book.author %></span>,
-          <span><%= book.publication_year %></span>
+          <div>
+            <%= link_to book, class: "text-decoration-none text-black underline-hover" do %>
+              <h5><%= book.title %></h5>
+            <% end %>
+            <span><%= book.author %></span>,
+            <span><%= book.publication_year %></span>
+          </div>
         </div>
-        <div>
+        <div class="d-flex flex-column gap-1 d-md-inline">
           <% if Current.user && Current.user.id == book.user_id %>
             <%= link_to 'Editar', edit_book_path(book), class: "btn btn-primary" %>
             <%= link_to 'Excluir', book, method: :delete, class: "btn btn-danger",
@@ -28,8 +33,8 @@
     <li class="page-item<%= (Integer(@info[:page]) == 1) ? ' disabled' : '' %>">
       <%= link_to "Anterior", root_path(page: Integer(@info[:page]) - 1), class: "page-link" %>
     </li>
-    <% (@info[:initial_pagination]..[@info[:total_pages], 10].min + @info[:initial_pagination] -1).each do |i| %>
-      <li class="page-item<%=  + (Integer(@info[:page]) == i ? ' active' : '') %>">
+    <% (@info[:initial_pagination]..[@info[:total_pages], 6].min + @info[:initial_pagination] - 1).each do |i| %>
+      <li class="page-item<%= +(Integer(@info[:page]) == i ? ' active' : '') %>">
         <%= link_to i, root_path(page: i), class: "page-link" %>
       </li>
     <% end %>

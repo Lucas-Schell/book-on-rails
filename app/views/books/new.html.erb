@@ -1,6 +1,6 @@
 <h1 class="text-center mt-2">Novo Livro</h1>
 <div id="new-book-page" class="d-flex flex-column align-items-center mx-auto">
-  <%= form_with model: @book, class: "w-100 max-w-50", url: books_path do |form| %>
+  <%= form_with model: @book, class: "w-100 max-w-50 p-3 border border-secondary shadow bg-off-white-light", url: books_path do |form| %>
     <% if form.object.errors.any? %>
       <div class="alert alert-danger">
         <% form.object.errors.messages.each do |attr, message| %>
@@ -11,7 +11,7 @@
 
     <div class="mb-3 position-relative">
       <%= form.label "Título" %>
-      <%= form.text_field :title, class: "dropdown-toggle form-control", href: "#", id:"book_title", role:"button", "data-bs-toggle":"dropdown", "aria-expanded":"false", autocomplete: "off" %>
+      <%= form.text_field :title, class: "dropdown-toggle form-control", href: "#", id: "book_title", role: "button", "data-bs-toggle": "dropdown", "aria-expanded": "false", autocomplete: "off" %>
       <ul id="result-list" class="dropdown-menu " aria-labelledby="title">
       </ul>
     </div>
@@ -24,6 +24,8 @@
       <%= form.label "Ano de publicação" %>
       <%= form.text_field :publication_year, class: "form-control" %>
     </div>
+    <%= form.text_field :image, type: "hidden" %>
+
     <div class="d-flex justify-content-center">
       <%= form.submit "Cadastrar Livro", class: "btn btn-primary" %>
     </div>
