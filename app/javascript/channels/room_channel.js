@@ -18,7 +18,7 @@ consumer.subscriptions.create("RoomChannel", {
         const params = Object.fromEntries(urlSearchParams.entries())
 
         if (element && (!params.page || params.page === '1')) {
-            const {book} = data;
+            const { book, userName } = data;
 
             const listItem = $('<li class="list-group-item d-flex align-items-center justify-content-between bg-off-white">')
             const listItemContainer = $('<div class="d-flex gap-2"></div>')
@@ -28,13 +28,14 @@ consumer.subscriptions.create("RoomChannel", {
             const img = $(`<img alt="${book.title}" class="img-thumbnail w-4_5 min-h-6" src="${book.image}"/>`)
 
             // problem: href not using the book_path
-            const aTitle = $(`<a class="text-decoration-none text-black underline-hover" href="books/${book.id}">`)
+            const aTitle = $(`<a class="text-decoration-none text-black underline-hover" href="/books/${book.id}">`)
             const h5Title = $(`<h5>${book.title}</h5>`)
             const span1Author = $(`<span>${book.author}, </span>`)
             const span2Year = $(`<span>${book.publication_year}</span>`)
+            const readBy = $(`<p class="mb-0 mt-4">Lido por: ${userName}</p>`)
 
             listItem.append(listItemContainer);
-            divBookInfo.append(aTitle, span1Author, span2Year);
+            divBookInfo.append(aTitle, span1Author, span2Year, readBy);
             listItemContainer.append(img, divBookInfo)
             aTitle.append(h5Title);
             const bookList = $("#book-list")

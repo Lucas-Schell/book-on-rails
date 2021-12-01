@@ -40,7 +40,7 @@ class BooksController < ApplicationController
     @book = Current.user.books.create(book_params)
 
     if @book.save
-      ActionCable.server.broadcast 'room_channel', { book: @book }
+      ActionCable.server.broadcast 'room_channel', { book: @book, userName: Current.user.name }
       redirect_to books_path, notice: 'Livro cadastrado com sucesso.'
     else
       render :new
