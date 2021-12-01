@@ -39,7 +39,7 @@ consumer.subscriptions.create("RoomChannel", {
             aTitle.append(h5Title);
             const bookList = $("#book-list")
             bookList.prepend(listItem)
-            if ($("#book-list li") === 6) {
+            if ($("#book-list li").length === 6) {
                 $('#book-list li:last-child').remove();
             }
         }
