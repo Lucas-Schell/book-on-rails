@@ -43,7 +43,6 @@ class BooksController < ApplicationController
       ActionCable.server.broadcast 'room_channel', { book: @book }
       redirect_to books_path, notice: 'Livro cadastrado com sucesso.'
     else
-      flash[:alert] = "Erro ao cadastrar livro."
       render :new
     end
   end

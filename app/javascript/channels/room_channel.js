@@ -14,7 +14,10 @@ consumer.subscriptions.create("RoomChannel", {
         // Called when there's incoming data on the websocket for this channel
         // check if it's the home page
         const element = document.getElementById('home-page')
-        if (element) {
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const params = Object.fromEntries(urlSearchParams.entries());
+        console.log(params)
+        if (element && (!params.page || params.page === '1')) {
             const {book} = data;
 
             const listItem = $('<li class=\"list-group-item d-flex justify-content-between\">');
@@ -29,6 +32,7 @@ consumer.subscriptions.create("RoomChannel", {
             div1.append(a, span1, span2);
             a.append(h5);
             $("#book-list").prepend(listItem);
+            $('#book-list li:last-child').remove();
         }
     }
 });
