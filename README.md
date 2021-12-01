@@ -1,24 +1,5 @@
-# README
+## Site para cadastro e exibição de livros lidos
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Um site onde um usuário pode cadastrar livros lidos e ver uma lista com todos livros que foram cadastrados por outros usuários.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Para rodar a aplicação com docker utilize: `docker-compose up`.
