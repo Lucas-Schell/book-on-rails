@@ -4,10 +4,10 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    reuslts_per_page = 5
+    results_per_page = 5
     param_page = params[:page].nil? || params[:page].to_i.zero? ? 1 : Integer(params[:page])
-    total_pages = Book.page(1).per(reuslts_per_page).total_pages
-    page = Book.page(param_page).per(reuslts_per_page).out_of_range? ? total_pages : param_page
+    total_pages = Book.where(user_id: Current.user.id).page(1).per(results_per_page).total_pages
+    page = Book.where(user_id: Current.user.id).page(param_page).per(results_per_page).out_of_range? ? total_pages : param_page
     initial_pagination = if page < 5 || total_pages < 11
                            1
                          elsif total_pages - page < 6
@@ -16,7 +16,7 @@ class BooksController < ApplicationController
                            page - 4
                          end
 
-    @books = Book.where(user_id: Current.user.id).order(created_at: :desc).page(page).per(reuslts_per_page)
+    @books = Book.where(user_id: Current.user.id).order(created_at: :desc).page(page).per(results_per_page)
     @info = { page: page, total_pages: total_pages,
               initial_pagination: initial_pagination }
   end
@@ -53,7 +53,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.update(book_params)
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
+        format.html { redirect_to @book, notice: 'Livro atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -68,7 +68,7 @@ class BooksController < ApplicationController
 
     @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
+      format.html { redirect_to books_url, notice: 'Livro excluído com sucesso.' }
       format.json { head :no_content }
     end
   end
