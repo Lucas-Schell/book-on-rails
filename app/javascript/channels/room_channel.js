@@ -16,11 +16,11 @@ consumer.subscriptions.create("RoomChannel", {
         const element = document.getElementById('home-page')
         const urlSearchParams = new URLSearchParams(window.location.search);
         const params = Object.fromEntries(urlSearchParams.entries());
-        console.log(params)
+
         if (element && (!params.page || params.page === '1')) {
             const {book} = data;
 
-            const listItem = $('<li class=\"list-group-item d-flex justify-content-between\">');
+            const listItem = $('<li class="list-group-item d-flex justify-content-between bg-off-white">');
             const div1 = $('<div></div>');
             // problem: href not using the book_path
             const a = $(`<a class="text-decoration-none text-black underline-hover" href="books/${book.id}">`);

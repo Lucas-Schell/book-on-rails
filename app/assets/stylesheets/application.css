@@ -25,3 +25,23 @@
 .dropdown-menu {
     min-width: 100%;
 }
+
+body {
+    background-color: #e1dcc5 !important;
+}
+
+.bg-off-white {
+    background-color: #eaeaea !important;
+}
+
+.max-w-25 {
+    max-width: 25rem;
+}
+
+.max-w-50 {
+    max-width: 50rem;
+}
+
+.color-grey {
+    color: #909090;
+}

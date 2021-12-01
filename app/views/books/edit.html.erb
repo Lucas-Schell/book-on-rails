@@ -1,7 +1,35 @@
-<h1>Editing Book</h1>
+<h1 class="text-center mt-2">Editar Livro</h1>
 
-<%= render 'form', book: @book %>
+<div id="edit-book-page" class="d-flex flex-column align-items-center mx-auto">
+  <%= form_with model: @book, class: "w-100 max-w-25", url: @book do |form| %>
+    <% if form.object.errors.any? %>
+      <div class="alert alert-danger">
+        <% form.object.errors.messages.each do |attr, message| %>
+          <div><%= message.first %></div>
+        <% end %>
+      </div>
+    <% end %>
 
-<%= link_to 'Show', @book %> |
-<%= link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', books_path %>
+    <div class="mb-3 position-relative" id="lll">
+      <%= form.label "Título" %>
+      <%= form.text_field :title, class: "dropdown-toggle form-control", href: "#", id: "book_title",
+                          role: "button", "data-bs-toggle": "dropdown", "aria-expanded": "false", autocomplete: "off" %>
+      <ul id="result-list" class="dropdown-menu " aria-labelledby="title">
+      </ul>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label "Autor" %>
+      <%= form.text_field :author, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label "Ano de publicação" %>
+      <%= form.text_field :publication_year, class: "form-control" %>
+    </div>
+    <div class="d-flex justify-content-evenly">
+      <%= link_to 'Excluir', @book, method: :delete, class: "btn btn-danger",
+                  data: { confirm: 'Você tem certeza que deseja excluir o livro?' } %>
+      <%= form.submit "Salvar Livro", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

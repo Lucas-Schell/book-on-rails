@@ -3,7 +3,7 @@
 <div id="home-page">
   <ul id="book-list" class="list-group">
     <% @books.each do |book| %>
-      <li class="list-group-item d-flex justify-content-between">
+      <li class="list-group-item d-flex align-items-center justify-content-between bg-off-white">
         <div>
           <%= link_to book, class: "text-decoration-none text-black underline-hover" do %>
             <h5><%= book.title %></h5>
@@ -13,7 +13,9 @@
         </div>
         <div>
           <% if Current.user && Current.user.id == book.user_id %>
-            <%= link_to 'Editar', edit_book_path(book) %>
+            <%= link_to 'Editar', edit_book_path(book), class: "btn btn-primary" %>
+            <%= link_to 'Excluir', book, method: :delete, class: "btn btn-danger",
+                        data: { confirm: 'Você tem certeza que deseja excluir o livro?' } %>
           <% end %>
         </div>
       </li>
